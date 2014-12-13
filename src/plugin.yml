@@ -1,0 +1,28 @@
+name: HGKits
+version: 1.0
+main: me.technopvp.hgkits.HGKits
+author: tpvp
+description: HCK.
+
+commands:
+    drop:
+        aliases: [dropitem]
+        usage: /<command>
+        description: Drops the players current item.
+    hgkits:
+        aliases: [plugin, hgk]
+        usage: /<command>
+        description: Get's the plugins commands.
+    kits:
+        aliases: [listkits, kitlist]
+        usage: /<command>
+        description: List's all the kits from the configeration file.
+    kit:
+        aliases: [getkit]
+        usage: /<command>
+        description: Kit commands such as creating, removing, and getting.
+        
+permissions:
+    hgkits.pvp:
+         description: Kit pvp
+         default: op

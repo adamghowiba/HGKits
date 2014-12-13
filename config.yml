@@ -1,0 +1,14 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                 Global                               | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Should the users lose hunger?
+lose-hunger: false
+
+# Should players take fall damage?
+take-fall-damage: true
+
+# Should players be allowed to drop items?
+player-drop-item: false
