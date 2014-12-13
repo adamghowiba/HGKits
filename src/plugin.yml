@@ -1,8 +1,8 @@
 name: HGKits
-version: 1.0
+version: 1.2.1
 main: me.technopvp.hgkits.HGKits
 author: tpvp
-description: HCK.
+description: Hunger games kits.
 
 commands:
     drop:

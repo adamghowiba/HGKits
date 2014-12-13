@@ -1,12 +1,11 @@
 package me.technopvp.hgkits.commands;
 
-import me.technopvp.common.commands.CommonCommand;
-import me.technopvp.common.managers.MessageManager;
 import me.technopvp.hgkits.HGKits;
+import me.technopvp.hgkits.managers.MessageManager;
 import me.technopvp.hgkits.utilities.enums.Permissions;
+import me.technopvp.hgkits.utilities.enums.Permissions.Permission;
 import me.technopvp.hgkits.utilities.enums.Source;
 import me.technopvp.hgkits.utilities.enums.SourceType;
-import me.technopvp.hgkits.utilities.enums.Permissions.Permission;
 
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -26,7 +25,7 @@ public class Command_drop extends CommonCommand {
 			if (!player.getItemInHand().getType().equals(Material.AIR)) {
 				player.setItemInHand(new ItemStack(Material.AIR));
 			}else {
-				MessageManager.message(player, "&aYou are not holding an item", true);
+				MessageManager.message(true, player, "&aYou are not holding an item");
 				return true;
 			}
 			return true;
