@@ -22,7 +22,6 @@ public class HGKits extends JavaPlugin {
 	 * TODO:
 	 * - Finish disabling kits.
 	 * - Make enable kit method, and subcommand.
-	 * - Make it use permissions.
 	 * - Make system for abilitys.
 	 * - Make config for kits.
 	 * - ADD BETTER TODO LIST
@@ -41,7 +40,6 @@ public class HGKits extends JavaPlugin {
 	}
 
 	public void onDisable() {
-
 		log.info(Lang.PREFIX.getMessage() + "HGKits has been disabled.");
 	}
 

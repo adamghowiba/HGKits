@@ -26,3 +26,18 @@ permissions:
     hgkits.pvp:
          description: Kit pvp
          default: op
+    hgkits.owner:
+         description: Global permission for owner.
+         default: op
+    hgkits.admin:
+         description: Global permission for admin.
+         default: op
+    hgkits.mod:
+         description: Global permission for mod.
+         default: op
+    hgkits.trial:
+         description: Global permission for trial.
+         default: op
+    hgkits.donor:
+         description: Global permission for donor.
+         default: op

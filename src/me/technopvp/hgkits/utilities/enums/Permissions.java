@@ -18,12 +18,12 @@ public @interface Permissions {
 
         // Permission levels
         ANYONE(""),
-        DONOR("HGKits.donor"),
-        TRIAL("HGKits.trial"),
-        MOD("HGKits.mod"),
-        ADMIN("HGKits.admin"),
-        OWNER("HGKits.owner");
-        
+        DONOR("hgkits.donor"),
+        TRIAL("hgkits.trial"),
+        MOD("hgkits.mod"),
+        ADMIN("hgkits.admin"),
+        OWNER("hgkits.owner");
+
         private String permission;
 
         public String getPermission() {
