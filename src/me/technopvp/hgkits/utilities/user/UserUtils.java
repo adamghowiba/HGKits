@@ -39,6 +39,8 @@ public class UserUtils extends User {
 	}
 
 	/**
+	 * Returns the user kit in String from.
+	 * It gets the kit from the an individual user's file, attached with dCommon.
 	 *
 	 * @param user
 	 *            - The user from the string.
@@ -63,4 +65,19 @@ public class UserUtils extends User {
 		return (getUserConfig(user).contains("Kit"));
 	}
 
+	/**
+	 *
+	 * Check if a user has the specified kit is attachted to a user via configeration file. <br>
+	 * It will return the value depending on the condition on if they have the specified kit.
+	 *
+	 * @param user
+	 *            - The user you will be checking.
+	 * @param kitName
+	 *            - The name of the kit you are checking.
+	 * @return
+	 */
+
+	public static boolean userHasKit(String user, String kitName) {
+		return (getUserKit(user).equals(kitName));
+	}
 }
