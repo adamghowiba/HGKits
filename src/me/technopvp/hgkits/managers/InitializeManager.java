@@ -15,6 +15,7 @@ public class InitializeManager {
 	public InitializeManager() {
 		registerListeners();
 		setupConfigerationFiles();
+		plugin.getCommand("kit").setExecutor(new SubCommandManager());
 	}
 
 	/**

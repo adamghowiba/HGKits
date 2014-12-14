@@ -11,6 +11,7 @@ import me.technopvp.common.utilities.enums.Level;
 import me.technopvp.common.utilities.player.InventoryUtils;
 import me.technopvp.hgkits.HGKits;
 import me.technopvp.hgkits.utilities.Lang;
+import me.technopvp.hgkits.utilities.user.UserUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -38,14 +39,19 @@ public class KitManager {
 	 * @see KitManager#createKit(Player, String)
 	 */
 
-	public static void createKit(Player player, String kitName) {
+	public static void createKit(Player player, String kitName, boolean override) {
 		FileConfiguration config = plugin.getConfig();
 		PlayerInventory playerInventory = player.getInventory();
 
 		/* Check if the kit has any items, if it doesn't tell them */
-		if (config.getConfigurationSection("kits." + kitName) != null) {
-			MessageManager.message(true, player, "&aKit '" + ChatColor.GOLD + kitName + "&a'" + " is alredy spesficed in the configeration file.");
-			MessageManager.log(Level.MEDIUM, player.getName() + " has recived an error while trying to get the kit '" + kitName + "'.");
+		if (override == false) {
+			if (config.getConfigurationSection("kits." + kitName) != null) {
+				MessageManager.message(true, player, "&aKit '" + ChatColor.GOLD + kitName + "&a'" + " is alredy spesficed in the configeration file. To update a kit do /kit update");
+				MessageManager.log(Level.MEDIUM, player.getName() + " has tried to over ride the kit '" + kitName + "'.");
+				return;
+			}
+		}else if(config.getConfigurationSection("kits." + kitName) == null) {
+			MessageManager.message(true, player, "&aKit '" + ChatColor.GOLD + kitName + "&a'" + " is not created. To create a kit do /kit create");
 			return;
 		}
 
@@ -104,7 +110,7 @@ public class KitManager {
 		config.set(path + "armor.boots", playerInventory.getBoots() != null ? playerInventory.getBoots().getType().toString().toLowerCase() : "air");
 
 		/* Message the player the kit was created */
-		MessageManager.message(true, player, "&aYou have created the kit '" + ChatColor.GOLD + kitName + "&a'.");
+		MessageManager.message(true, player, "&aYou have " + (override == true ? "updated" : "created") + " the kit '" + ChatColor.GOLD + kitName + "&a'.");
 
 		/* Save the kit to the configeration file */
 		plugin.saveConfig();
@@ -194,7 +200,7 @@ public class KitManager {
 			if (name != null) kitItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
 
 			/* Check if the lore is not equal to null */
-			if (lore != null) kitItemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', lore.toString())));
+			if (!lore.isEmpty()) kitItemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&', lore.toString().replace("[", "").replace("]", ""))));
 
 			/* Check the enchantments onthe kit, and if there not null */
 			if (enchants != null) {
@@ -239,6 +245,9 @@ public class KitManager {
 		/* We are all done, update the players inventory with the new kit */
 		player.updateInventory();
 
+		/* Set the users kit in the configeration file */
+		UserUtils.setUserKit(player.getName(), kitName);
+
 		/* Message the player that they have the new kit */
 		MessageManager.message(true, player, "&aYou have recived the kit '" + ChatColor.GOLD + kitName + "&a'.");
 	}
@@ -254,9 +263,16 @@ public class KitManager {
 	 */
 
 	public static void removeKit(Player player, String kitName) {
+		/* Check if the kit exists in the configeration file */
 		if (plugin.getConfig().contains("kits." + kitName)) {
+
+			/* If it does set there kit to null */
 			plugin.getConfig().set("kits." + kitName, null);
+
+			/* Tell the player, the kit has been removed. */
 			MessageManager.message(player, "&aYou have removed the kit '&6" + kitName + "&a'.");
+
+			/* Save the configeration file */
 			plugin.saveConfig();
 		} else {
 			MessageManager.message(true, player, "&aThe kit '&6" + kitName + "&a' doesn't exist in the configeration file.");

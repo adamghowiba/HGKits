@@ -20,11 +20,12 @@ public class HGKits extends JavaPlugin {
 
 	/*
 	 * TODO:
-	 * - Finish disabling kits.
-	 * - Make enable kit method, and subcommand.
 	 * - Make system for abilitys.
-	 * - Make config for kits.
-	 * - ADD BETTER TODO LIST
+	 */
+
+	/*
+	 * Known Bugs:
+	 * - Lore, can only get first line, not other lines from the configeration string list.
 	 */
 
 	public Logger log = Logger.getLogger("Minecraft");
