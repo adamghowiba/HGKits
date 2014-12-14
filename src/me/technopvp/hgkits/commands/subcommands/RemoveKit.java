@@ -16,6 +16,7 @@ public class RemoveKit extends SubCommand {
 		if (args.length == 1) {
 			String kitName = args[0];
 
+			/* Remove kit method. All checking done there */
 			KitManager.removeKit(player, kitName);
 			return true;
 		}

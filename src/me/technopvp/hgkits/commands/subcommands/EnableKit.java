@@ -16,6 +16,7 @@ public class EnableKit extends SubCommand {
 		if (args.length == 1) {
 			String kitName = args[0];
 
+			/* Enable kit method, all checking done there.*/
 			KitManager.enableKit(player, kitName);
 			return true;
 		}

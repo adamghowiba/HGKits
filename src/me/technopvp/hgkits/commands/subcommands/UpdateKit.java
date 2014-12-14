@@ -16,6 +16,7 @@ public class UpdateKit extends SubCommand {
 		if (args.length == 1) {
 			String kitName = args[0];
 
+			/* Update kit method. check for overriding method */
 			KitManager.createKit(player, kitName, true);
 			return true;
 		}

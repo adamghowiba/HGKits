@@ -18,6 +18,7 @@ public class CheckKit extends SubCommand {
 		if (args.length == 1) {
 			Player target = Bukkit.getPlayer(args[0]);
 
+			/* If the player has a kit, return the kit. If they don't tell them */
 			MessageManager.message(true, player, "&a" + (UserUtils.userHasKit(target.getName()) == true
 					? target.getName() + "'s kit: " + UserUtils.getUserKit(target.getName())
 					: target.getName() + " does not have a kit."));

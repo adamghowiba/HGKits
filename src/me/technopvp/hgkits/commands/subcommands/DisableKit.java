@@ -16,6 +16,7 @@ public class DisableKit extends SubCommand {
 		if (args.length == 1) {
 			String kitName = args[0];
 
+			/* Disable kit method, all checking done there. */
 			KitManager.disableKit(player, kitName);
 			return true;
 		}

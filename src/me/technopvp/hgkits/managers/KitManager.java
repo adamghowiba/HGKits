@@ -43,14 +43,14 @@ public class KitManager {
 		FileConfiguration config = plugin.getConfig();
 		PlayerInventory playerInventory = player.getInventory();
 
-		/* Check if the kit has any items, if it doesn't tell them */
+		/* Check if the method is overrding the current kit */
 		if (override == false) {
 			if (config.getConfigurationSection("kits." + kitName) != null) {
 				MessageManager.message(true, player, "&aKit '" + ChatColor.GOLD + kitName + "&a'" + " is alredy spesficed in the configeration file. To update a kit do /kit update");
 				MessageManager.log(Level.MEDIUM, player.getName() + " has tried to over ride the kit '" + kitName + "'.");
 				return;
 			}
-		}else if(config.getConfigurationSection("kits." + kitName) == null) {
+		} else if (config.getConfigurationSection("kits." + kitName) == null) {
 			MessageManager.message(true, player, "&aKit '" + ChatColor.GOLD + kitName + "&a'" + " is not created. To create a kit do /kit create");
 			return;
 		}

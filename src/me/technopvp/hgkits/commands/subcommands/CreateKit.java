@@ -16,6 +16,7 @@ public class CreateKit extends SubCommand {
 		if (args.length == 1) {
 			String kitName = args[0];
 
+			/* Create kit method. All checking is done there */
 			KitManager.createKit(player, kitName, false);
 			return true;
 		}
