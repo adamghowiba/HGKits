@@ -39,7 +39,7 @@ public class UserUtils extends User {
 	}
 
 	/**
-	 * Returns the user kit in String from.
+	 * Returns the user kit in String from. <br>
 	 * It gets the kit from the an individual user's file, attached with dCommon.
 	 *
 	 * @param user

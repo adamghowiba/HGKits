@@ -3,6 +3,7 @@ package me.technopvp.hgkits.managers;
 import me.technopvp.hgkits.HGKits;
 import me.technopvp.hgkits.listeners.EntityDamage;
 import me.technopvp.hgkits.listeners.FoodLevelChange;
+import me.technopvp.hgkits.listeners.PlayerDeath;
 import me.technopvp.hgkits.listeners.PlayerDropItem;
 import me.technopvp.hgkits.listeners.PlayerListener;
 
@@ -37,6 +38,7 @@ public class InitializeManager {
 		pluginManager.registerEvents(new EntityDamage(), plugin);
 		pluginManager.registerEvents(new FoodLevelChange(), plugin);
 		pluginManager.registerEvents(new PlayerListener(), plugin);
+		pluginManager.registerEvents(new PlayerDeath(), plugin);
 		pluginManager.registerEvents(new PlayerDropItem(), plugin);
 	}
 
