@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import me.technopvp.common.utilities.enums.Level;
 import me.technopvp.hgkits.commands.subcommands.CheckKit;
+import me.technopvp.hgkits.commands.subcommands.ClearKit;
 import me.technopvp.hgkits.commands.subcommands.CreateKit;
 import me.technopvp.hgkits.commands.subcommands.DisableKit;
 import me.technopvp.hgkits.commands.subcommands.EnableKit;
@@ -32,11 +33,12 @@ public class SubCommandManager implements CommandExecutor {
 		cmds.add(new EnableKit());
 		cmds.add(new DisableKit());
 		cmds.add(new UpdateKit());
+		cmds.add(new ClearKit());
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(ChatColor.RED + "Only players can use team commands!");
+			sender.sendMessage(ChatColor.RED + "You are not permitted to use this command in console.");
 			return true;
 		}
 		Player player = (Player) sender;

@@ -3,11 +3,11 @@ package me.technopvp.hgkits.utilities.enums;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.technopvp.hgkits.HGKits;
 import me.technopvp.hgkits.commands.CommonCommand;
+
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Source {

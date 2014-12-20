@@ -69,8 +69,13 @@ public class KitManager {
 			/* Get the path of the item, that we are setting */
 			String slot = path + "items." + i;
 
+			/* Check if the item data is 0, if so it's default, if not check it */
+			if (playerItems.getDurability() != 0) {
+				config.set(slot + ".data", playerItems.getDurability());
+			}
+
 			/* Set the inventory item in the configeration file */
-			config.set(slot + ".type", playerItems.getType().toString().toLowerCase());
+			config.set(slot + ".type", playerItems.getType().toString());
 			config.set(slot + ".amount", playerItems.getAmount());
 
 			/* If item has no meta ignore this part */
@@ -132,6 +137,11 @@ public class KitManager {
 	public static void giveKit(Player player, String kitName) {
 		FileConfiguration config = plugin.getConfig();
 
+		if (UserUtils.userHasKit(player.getName())) {
+			MessageManager.message(true, player, "&aYou alredy have a kit.");
+			return;
+		}
+
 		/* Check if the kit is disabled, if it is don't allow them to receive the kit. */
 		if (kitDisabled(kitName) == true) {
 			MessageManager.message(true, player, "&aThis kit is currently disabled.");
@@ -175,6 +185,8 @@ public class KitManager {
 			/* Grab the kit path's type (the item) */
 			String type = config.getString(string + "type");
 
+			int data = config.getInt(string + "data");
+
 			/* Grab the kit path's name. (the display name */
 			String name = config.getString(string + "name");
 
@@ -188,7 +200,7 @@ public class KitManager {
 			int amount = config.getInt(string + "amount");
 
 			/* Get the item stack by matching it with the type */
-			ItemStack kitItemStack = new ItemStack(Material.matchMaterial(type.toUpperCase()), amount);
+			ItemStack kitItemStack = new ItemStack(Material.matchMaterial(type), amount, (config.contains(string + "data") ? (short) data : 0));
 
 			/* Get the item meta from the item meta in the configeration file */
 			ItemMeta kitItemMeta = kitItemStack.getItemMeta();
@@ -252,6 +264,40 @@ public class KitManager {
 		MessageManager.message(true, player, "&aYou have recived the kit '" + ChatColor.GOLD + kitName + "&a'.");
 	}
 
+	public static void giveKitArmor(Player player, String kitName) {
+		FileConfiguration config = plugin.getConfig();
+
+		/* Check if the kit existes in the configeration file, if it doesn't tell them */
+		if (config.getConfigurationSection("kits." + kitName) == null) {
+			MessageManager.message(true, player, "&aKit '" + ChatColor.GOLD + kitName + "&a' does not exist in the confieration file.");
+			return;
+		}
+
+		/* Clear the players inventory, to allow room for the kit */
+		InventoryUtils.clearArmor(player);
+
+		/* Get the configeration path for the kit */
+		String kitPath = "kits." + kitName + ".";
+
+		/* Get the helmet from the configeration file */
+		String helmet = config.getString(kitPath + "armor.helmet").toUpperCase();
+
+		/* Get the chestplate from the configeration file */
+		String chestplate = config.getString(kitPath + "armor.chestplate").toUpperCase();
+
+		/* Get the leggings from the configeration file */
+		String leggings = config.getString(kitPath + "armor.leggings").toUpperCase();
+
+		/* Get the boots from the configeration file */
+		String boots = config.getString(kitPath + "armor.boots").toUpperCase();
+
+		/* Give each armor pice. If the armor pice is null, it well set the armor to nothing.*/
+		player.getInventory().setHelmet(new ItemStack(helmet != null ? Material.matchMaterial(helmet) : Material.AIR));
+		player.getInventory().setChestplate(new ItemStack(chestplate != null ? Material.matchMaterial(chestplate) : Material.AIR));
+		player.getInventory().setLeggings(new ItemStack(leggings != null ? Material.matchMaterial(leggings) : Material.AIR));
+		player.getInventory().setBoots(new ItemStack(boots != null ? Material.matchMaterial(boots) : Material.AIR));
+	}
+
 	/**
 	 *
 	 * If the kit exists, remove it from the configeration file.
@@ -270,7 +316,7 @@ public class KitManager {
 			plugin.getConfig().set("kits." + kitName, null);
 
 			/* Tell the player, the kit has been removed. */
-			MessageManager.message(player, "&aYou have removed the kit '&6" + kitName + "&a'.");
+			MessageManager.message(true, player, "&aYou have removed the kit '&6" + kitName + "&a'.");
 
 			/* Save the configeration file */
 			plugin.saveConfig();

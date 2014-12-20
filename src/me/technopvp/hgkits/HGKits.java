@@ -20,7 +20,9 @@ public class HGKits extends JavaPlugin {
 
 	/*
 	 * TODO:
-	 * - Make system for abilitys.
+	 * - Make an item for each kit [UN-FINISHED]
+	 * - Make system for abilitys. [DONE]
+	 * - Make a kit GUI. [DONE]
 	 */
 
 	/*

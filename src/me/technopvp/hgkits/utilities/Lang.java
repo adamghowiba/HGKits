@@ -1,10 +1,10 @@
 package me.technopvp.hgkits.utilities;
 
-import me.technopvp.common.utilities.StringUtils;
 
 public enum Lang {
 
-	PREFIX("&a[&6HGKITS&a]");
+	PREFIX("&a[&6HGKITS&a]"),
+	KIT_MENU("&cKit Menu.");
 
 	private String message;
 
@@ -20,8 +20,9 @@ public enum Lang {
 	 */
 
 	public String getMessage() {
-		return StringUtils.colorize(message + " ");
+		return message + " ";
 	}
+
 
 	public void setMessage(String message) {
 		this.message = message;

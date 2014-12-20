@@ -30,22 +30,22 @@ public class MessageManager extends CommonCore {
 	 */
 
 	public static void message(boolean prefix, CommandSender sender, String message) {
-		sender.sendMessage((prefix == true ? Lang.PREFIX.getMessage() + StringUtils.colorize(message)
-				: StringUtils.colorize(message)));
+		sender.sendMessage(StringUtils.colorize((prefix == true ? Lang.PREFIX.getMessage() + message
+				: message)));
 	}
 
-	/**
-	 * @param sender
-	 *            - The console or player.
-	 * @param message
-	 *            - The string, that will be sent.
-	 *
-	 * @see MessageManager#message(sender, message)
-	 */
-
-	public static void message(CommandSender sender, String message) {
-		sender.sendMessage(StringUtils.colorize(message));
-	}
+//	/**
+//	 * @param sender
+//	 *            - The console or player.
+//	 * @param message
+//	 *            - The string, that will be sent.
+//	 *
+//	 * @see MessageManager#message(sender, message)
+//	 */
+//
+//	public static void message(CommandSender sender, String message) {
+//		sender.sendMessage(StringUtils.colorize(message));
+//	}
 
 	/**
 	 * @param command
@@ -57,7 +57,7 @@ public class MessageManager extends CommonCore {
 	 */
 
 	public static void showUsage(CommandSender sender, Command command) {
-		MessageManager.message(sender, ChatColor.YELLOW + "Usage: " + command.getUsage().replaceAll("<command>", command.getName()));
+		MessageManager.message(false, sender, ChatColor.YELLOW + "Usage: " + command.getUsage().replaceAll("<command>", command.getName()));
 	}
 
 	/**

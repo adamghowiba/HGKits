@@ -19,7 +19,7 @@ public class UserUtils extends User {
 	 */
 
 	public static void setUserKit(String user, String kitName) {
-		getUser(user).getPlayerConfig().getConfig().set("Kit", kitName);
+		getUser(user).getPlayerConfig().getConfig().set("Kit.kit", kitName);
 		getUser(user).getPlayerConfig().savePlayerConfig();
 	}
 
@@ -33,14 +33,15 @@ public class UserUtils extends User {
 
 	public static void removeUserKit(String user) {
 		if (userHasKit(user) == true) {
-			getUser(user).getPlayerConfig().getConfig().set("Kit", null);
+			getUser(user).getPlayerConfig().getConfig().set("Kit.kit", null);
 			getUser(user).getPlayerConfig().savePlayerConfig();
 		}
 	}
 
 	/**
 	 * Returns the user kit in String from. <br>
-	 * It gets the kit from the an individual user's file, attached with dCommon.
+	 * It gets the kit from the an individual user's file, attached with
+	 * dCommon.
 	 *
 	 * @param user
 	 *            - The user from the string.
@@ -48,7 +49,7 @@ public class UserUtils extends User {
 	 */
 
 	public static String getUserKit(String user) {
-		return getUser(user).getPlayerConfig().getConfig().getString("Kit");
+		return getUser(user).getPlayerConfig().getConfig().getString("Kit.kit");
 	}
 
 	/**
@@ -62,13 +63,15 @@ public class UserUtils extends User {
 	 */
 
 	public static boolean userHasKit(String user) {
-		return (getUserConfig(user).contains("Kit"));
+		return (getUserConfig(user).contains("Kit.kit"));
 	}
 
 	/**
 	 *
-	 * Check if a user has the specified kit is attachted to a user via configeration file. <br>
-	 * It will return the value depending on the condition on if they have the specified kit.
+	 * Check if a user has the specified kit is attachted to a user via
+	 * configeration file. <br>
+	 * It will return the value depending on the condition on if they have the
+	 * specified kit.
 	 *
 	 * @param user
 	 *            - The user you will be checking.
@@ -80,4 +83,99 @@ public class UserUtils extends User {
 	public static boolean userHasKit(String user, String kitName) {
 		return (getUserKit(user).equals(kitName));
 	}
+
+	/**
+	 * Add a kill to a players stats, in the data base.
+	 *
+	 * @param user
+	 *            - The user you will be adding a kill to.
+	 */
+
+	public static void addKill(String user) {
+		getUserConfig(user).set("Kit.kills", getUserConfig(user).getInt("Kit.kills") + 1);
+		getUser(user).getPlayerConfig().savePlayerConfig();
+	}
+
+	/**
+	 * Remove a kill from a user, from the datab base.
+	 *
+	 * @param user
+	 *            - The user you will be removing a kill from.
+	 */
+
+	public static void removeKill(String user) {
+		getUserConfig(user).set("Kit.kills", getUserConfig(user).getInt("Kit.kills") - 1);
+		getUser(user).getPlayerConfig().savePlayerConfig();
+	}
+
+	/**
+	 * Add a death to a user, in the data base.
+	 *
+	 * @param user
+	 *            - The user you will be adding a death to.
+	 */
+
+	public static void addDeath(String user) {
+		getUserConfig(user).set("Kit.deaths", getUserConfig(user).getInt("Kit.deaths") + 1);
+		getUser(user).getPlayerConfig().savePlayerConfig();
+	}
+
+	/**
+	 * Remove a death from a user.
+	 *
+	 * @param user
+	 *            - The user you will be removing a death from.
+	 */
+
+	public static void removeDeath(String user) {
+		getUserConfig(user).set("Kit.deaths", getUserConfig(user).getInt("Kit.deaths") - 1);
+		getUser(user).getPlayerConfig().savePlayerConfig();
+	}
+
+	/**
+	 * Get the deat's of a user from the data base. <br>
+	 * In this instance we will be grabbing it from our FLATLINE configeration
+	 * file.
+	 *
+	 * @return The user's deaths.
+	 */
+
+	public static int getDeaths(String user) {
+		return getUserConfig(user).getInt("Kit.deaths");
+	}
+
+	/**
+	 * Get the user's kills from the data base.
+	 *
+	 * @return The users kills.
+	 */
+
+	public static int getKills(String user) {
+		return getUserConfig(user).getInt("Kit.kills");
+	}
+
+	/**
+	 * Set a users current kill streak, to an integer.
+	 *
+	 * @param killstreak
+	 *            - The integer you will be setting as the user's killstreak.
+	 * @param user
+	 *            - The user you will be removing a kill from.
+	 */
+
+	public static void setKillstreak(String user, int killstreak) {
+		getUserConfig(user).set("Kit.killstreak", killstreak);
+		getUser(user).getPlayerConfig().savePlayerConfig();
+	}
+
+	/**
+	 * Remove a kill from a user, from the datab base.
+	 *
+	 * @return The users current kill streak.
+	 */
+
+	public static int getCurrentKillstreak(String user) {
+		return getUserConfig(user).getInt("Kit.killstreak");
+	}
+
 }

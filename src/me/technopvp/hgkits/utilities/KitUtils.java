@@ -18,7 +18,7 @@ public class KitUtils {
 	 * List the kit names from the configeration file by iterating through the configeration file.
 	 * Kit color will be returned diffrently depending on the condintion.
 	 *
-	 * @param player
+	 * @param sender
 	 *            - The player that will be checking for permission.
 	 * @return kits - The string list of kits. Color depedning on if they have permission to the kit.
 	 */
@@ -35,6 +35,26 @@ public class KitUtils {
 				kits.add((sender.hasPermission("hgkits." + kitNames)
 						? ChatColor.GREEN + kitNames
 						: ChatColor.RED + kitNames) + ChatColor.GREEN);
+			}
+		}
+		return kits;
+	}
+
+	/**
+	 * Return a list of the kits.
+	 *
+	 * @return kits - The string list of kits. .
+	 */
+
+	public static List<String> listKits() {
+		List<String> kits = new ArrayList<String>();
+
+		/* Check if the config contaions the configerationn section 'kits'. * Error porpouses */
+		if (plugin.getConfig().contains("kits")) {
+			/* Iterate through the kits and get the kitNames */
+			for (String kitNames : plugin.getConfig().getConfigurationSection("kits").getKeys(false)) {
+				/* Add the kitNames to an array list of strings. */
+				kits.add(ChatColor.RESET + kitNames.toString());
 			}
 		}
 		return kits;

@@ -18,6 +18,11 @@ public class CheckKit extends SubCommand {
 		if (args.length == 1) {
 			Player target = Bukkit.getPlayer(args[0]);
 
+			if (target == null) {
+				MessageManager.message(true, player, "Player '&6" + args[0] + "&a' is not currently online.");
+				return true;
+			}
+
 			/* If the player has a kit, return the kit. If they don't tell them */
 			MessageManager.message(true, player, "&a" + (UserUtils.userHasKit(target.getName()) == true
 					? target.getName() + "'s kit: " + UserUtils.getUserKit(target.getName())
