@@ -41,7 +41,7 @@ public class ClearKit extends SubCommand {
 	}
 
 	public ClearKit() {
-		super(CommandType.ADMIN, "clearkit", "Clear a kit", "clear");
+		super(CommandType.DEFAULT, "clearkit", "Clear a kit", "clear");
 	}
 
 }

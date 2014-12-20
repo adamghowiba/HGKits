@@ -10,6 +10,7 @@ import me.technopvp.hgkits.commands.subcommands.ClearKit;
 import me.technopvp.hgkits.commands.subcommands.CreateKit;
 import me.technopvp.hgkits.commands.subcommands.DisableKit;
 import me.technopvp.hgkits.commands.subcommands.EnableKit;
+import me.technopvp.hgkits.commands.subcommands.HelpCommand;
 import me.technopvp.hgkits.commands.subcommands.RemoveKit;
 import me.technopvp.hgkits.commands.subcommands.SubCommand;
 import me.technopvp.hgkits.commands.subcommands.UpdateKit;
@@ -23,17 +24,19 @@ import org.bukkit.entity.Player;
 
 public class SubCommandManager implements CommandExecutor {
 
-	private ArrayList<SubCommand> cmds = new ArrayList<SubCommand>();
+	public static ArrayList<SubCommand> cmds = new ArrayList<SubCommand>();
 
 	public SubCommandManager() {
 		/* Add the commands */
 		cmds.add(new CreateKit());
 		cmds.add(new RemoveKit());
+		cmds.add(new UpdateKit());
 		cmds.add(new CheckKit());
 		cmds.add(new EnableKit());
 		cmds.add(new DisableKit());
 		cmds.add(new UpdateKit());
 		cmds.add(new ClearKit());
+		cmds.add(new HelpCommand());
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {

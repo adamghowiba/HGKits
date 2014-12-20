@@ -33,7 +33,7 @@ public class CheckKit extends SubCommand {
 	}
 
 	public CheckKit() {
-		super(CommandType.ADMIN,  "check <player>", "Check a players kit", "check");
+		super(CommandType.DEFAULT,  "check <player>", "Check a players kit", "check");
 	}
 
 }
