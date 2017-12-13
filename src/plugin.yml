@@ -22,6 +22,8 @@ commands:
         usage: /<command>
         description: Kit commands such as creating, removing, and getting.
     stats:
+    duel:
+    setstats:
         
 permissions:
     hgkits.pvp:

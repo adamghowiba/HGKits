@@ -1,6 +1,6 @@
 package me.technopvp.hgkits.commands.subcommands;
 
-import me.technopvp.hgkits.managers.MessageManager;
+import me.technopvp.common.managers.MessageManager;
 import me.technopvp.hgkits.utilities.enums.CommandType;
 import me.technopvp.hgkits.utilities.user.UserUtils;
 

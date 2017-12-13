@@ -43,7 +43,7 @@ public abstract class CommonCommand extends CommonCore {
 	}
 
 	public boolean noPermission() {
-		MessageManager.message(commandSender, "&aYou do not have sufficient permission to this.", true);
+		MessageManager.message(true, commandSender, "&aYou do not have sufficient permission to this.");
 		return true;
 	}
 

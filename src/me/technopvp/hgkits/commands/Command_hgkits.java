@@ -1,8 +1,8 @@
 package me.technopvp.hgkits.commands;
 
+import me.technopvp.common.managers.MessageManager;
 import me.technopvp.common.utilities.enums.Level;
 import me.technopvp.hgkits.HGKits;
-import me.technopvp.hgkits.managers.MessageManager;
 import me.technopvp.hgkits.utilities.enums.Permissions;
 import me.technopvp.hgkits.utilities.enums.Permissions.Permission;
 import me.technopvp.hgkits.utilities.enums.Source;

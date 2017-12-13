@@ -2,10 +2,10 @@ package me.technopvp.hgkits;
 
 import java.util.logging.Logger;
 
+import me.technopvp.common.managers.MessageManager;
 import me.technopvp.common.utilities.enums.Level;
 import me.technopvp.hgkits.commands.CommonCommand;
 import me.technopvp.hgkits.managers.InitializeManager;
-import me.technopvp.hgkits.managers.MessageManager;
 import me.technopvp.hgkits.utilities.Lang;
 import me.technopvp.hgkits.utilities.enums.Permissions.PermissionUtils;
 import me.technopvp.hgkits.utilities.enums.Source.SourceUtils;

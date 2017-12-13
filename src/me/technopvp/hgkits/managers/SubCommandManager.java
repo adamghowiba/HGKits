@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
+import me.technopvp.common.managers.MessageManager;
 import me.technopvp.common.utilities.enums.Level;
 import me.technopvp.hgkits.commands.subcommands.CheckKit;
 import me.technopvp.hgkits.commands.subcommands.ClearKit;
@@ -12,6 +13,7 @@ import me.technopvp.hgkits.commands.subcommands.DisableKit;
 import me.technopvp.hgkits.commands.subcommands.EnableKit;
 import me.technopvp.hgkits.commands.subcommands.HelpCommand;
 import me.technopvp.hgkits.commands.subcommands.RemoveKit;
+import me.technopvp.hgkits.commands.subcommands.SetDefaultKit;
 import me.technopvp.hgkits.commands.subcommands.SubCommand;
 import me.technopvp.hgkits.commands.subcommands.UpdateKit;
 import me.technopvp.hgkits.utilities.KitUtils;
@@ -37,6 +39,7 @@ public class SubCommandManager implements CommandExecutor {
 		cmds.add(new UpdateKit());
 		cmds.add(new ClearKit());
 		cmds.add(new HelpCommand());
+		cmds.add(new SetDefaultKit());
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
@@ -66,10 +69,10 @@ public class SubCommandManager implements CommandExecutor {
 
 					/* Check if there we're ANY erros that occoured while grabbing the kit */
 					try {
-						KitManager.giveKit(player, kitName);
 					} catch (Exception execption) {
 						/* Well... I guess soemthig went wrong. Let's make sure they know */
-						MessageManager.log(Level.HIGH, player.getName() + " has recived an error while trying to get the kit '" + kitName + "'.");
+						MessageManager.log(Level.HIGH, player.getName() + " encountered error while reciving kit '" + kitName + "'.");
+						execption.printStackTrace();
 					}
 					return true;
 				}

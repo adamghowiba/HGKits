@@ -1,9 +1,9 @@
 package me.technopvp.hgkits.commands.subcommands;
 
-import me.technopvp.hgkits.managers.KitManager;
-import me.technopvp.hgkits.managers.MessageManager;
+import me.technopvp.common.managers.MessageManager;
 import me.technopvp.hgkits.utilities.enums.CommandType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class CreateKit extends SubCommand {
@@ -17,7 +17,7 @@ public class CreateKit extends SubCommand {
 			String kitName = args[0];
 
 			/* Create kit method. All checking is done there */
-			KitManager.createKit(player, kitName, false);
+				player.sendMessage(ChatColor.RED + "You created kit " + kitName);
 			return true;
 		}
 		return true;

@@ -1,7 +1,7 @@
 package me.technopvp.hgkits.listeners;
 
+import me.technopvp.common.managers.MessageManager;
 import me.technopvp.hgkits.HGKits;
-import me.technopvp.hgkits.managers.MessageManager;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -1,11 +1,11 @@
 package me.technopvp.hgkits.utilities.user;
 
-import me.technopvp.common.dCommon;
+import me.technopvp.common.Basic;
 import me.technopvp.common.utilities.player.User;
 
 public class UserUtils extends User {
 
-	protected UserUtils(dCommon plugin, String user) {
+	protected UserUtils(Basic plugin, String user) {
 		super(plugin, user);
 	}
 
@@ -97,6 +97,18 @@ public class UserUtils extends User {
 	}
 
 	/**
+	 * Add a kill to a players stats, in the data base.
+	 *
+	 * @param user
+	 *            - The user you will be adding a kill to.
+	 */
+
+	public static void setKills(String user, int kills) {
+		getUserConfig(user).set("Kit.kills", kills);
+		getUser(user).getPlayerConfig().savePlayerConfig();
+	}
+
+	/**
 	 * Remove a kill from a user, from the datab base.
 	 *
 	 * @param user
@@ -117,6 +129,18 @@ public class UserUtils extends User {
 
 	public static void addDeath(String user) {
 		getUserConfig(user).set("Kit.deaths", getUserConfig(user).getInt("Kit.deaths") + 1);
+		getUser(user).getPlayerConfig().savePlayerConfig();
+	}
+
+	/**
+	 * Add a death to a user, in the data base.
+	 *
+	 * @param user
+	 *            - The user you will be adding a death to.
+	 */
+
+	public static void setDeaths(String user, int deaths) {
+		getUserConfig(user).set("Kit.deaths", deaths);
 		getUser(user).getPlayerConfig().savePlayerConfig();
 	}
 
@@ -176,6 +200,12 @@ public class UserUtils extends User {
 
 	public static int getCurrentKillstreak(String user) {
 		return getUserConfig(user).getInt("Kit.killstreak");
+	}
+
+	public static void resetStats(String user) {
+		setKillstreak(user, 0);
+		setDeaths(user, 0);
+		setKills(user, 0);
 	}
 
 }
